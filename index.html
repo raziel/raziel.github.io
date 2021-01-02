@@ -2,6 +2,11 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Raleway:wght@100;400&display=swap" rel="stylesheet">
+  <!--  collapsible panel  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     body {
       font-family: 'Raleway', sans-serif;
@@ -9,70 +14,127 @@
     h1 {
       font-family: 'Josefin Sans', sans-serif;
     }
-    .content_box {
-      max-width: 75%;
+    /*card*/
+    body {
       display: grid;
       place-items: center;
+      height: 100vh;
     }
-    .main_content {
-      
+
+    .visual {
+      height: 150px;
+      width: 100%;
+      background: lightgray;
+      background-image: url(https://pbs.twimg.com/profile_banners/92436265/1560292447/600x200);
+      margin: 0.5rem 0;
+      position: relative;
+    }
+
+    .card {
+      width: clamp(45ch, 50%, 75ch);
+      display: flex;
+      flex-direction: column;
+      background: lightpink;
+      padding: 1rem;
+    }
+    /*collapsible panel*/
+    .container {
+      max-width: 100%;
+      /*margin: auto;*/
+      background: white;
+      /*padding: 10px;*/
+    }
+    /*profile image*/
+    .circular--square {
+      border-radius: 50%;
+      height: 100%;
+      align-content: center;
+      border: 3px solid white;
+      margin-top: 60px;
+      margin-left: 15px;
+    }
+    /* Bottom right text */
+    .text-block {
+      position: absolute;
+      bottom: 0px;
+      right: 5px;
+      color: white;
+    /*  padding-left: 20px;
+      padding-right: 20px;*/
     }
   </style>
 </head>
 <body>
-<div class="content_box">
-<div class="main_content">
-<h1>Raziel Alvarez</h1>
-<p>Hi.</p>
-
-<p>
-I’m a pragmatic engineer in constant search for the balance between beautiful, universal solutions and impact in the real world.
-</p>
-
-<p>
-Today I do this as part of the <logo>PyTorch team at Facebook, developing a machine learning framework that powers state of the art research, and helps bring that research to products across an ever increasing number of fields.
-</p>
-<p>
-Previously, I spent 8 years at Google where I spent a good part of that time also building machine learning frameworks (like <logo>TensorFlow), and doing a bit of research with direct impact in Google’s products (like <logo>Hey Google).
-Oh, and my first few months I worked on the Fonts project that I use on this site.
-</p>
-
-<p>
-For more details on my Google projects browse here.
-</p>
-
-<p>
-Prior to that I spent 7 years at Appian, where I lead a number of projects but most significantly co-authored the SAIL (Self-Assembling Interface Layer) technology which underpins the company’s low-code platform.
-</p>
-
-<h2>Areas of expertise:</h2>
-  <li>Efficient deep learning model representation (compression, quantization, etc.) & inference execution (CPU, embedded, neural network accelerator hardware)</li>
-  <li>Research and implementation of neural network topologies and techniques</li>
-  <li>Keyword spotting for embedded systems</li>
-  <li>Acoustic modeling for general speech recognition</li>
-  <li>Acoustic speaker verification</li>
-  <li>Coding: C++/C, Python, Java</li>
-</ul>
-</p>
-
-<h2>Patents</h2>
-    US 9,372,675 
-
-<h2>Education</h2>
-<p>
-Instituto Tecnológico y de Estudios Superiores de Monterrey                                     2003 – 2005
-Master in Computer Science, Artificial Intelligence, Image Processing, Robotics
-Summa Cum Laude
-Activities and Societies: ACM Collegiate Programming Contest (ITESM), RoboCup (ITESM), Research assistant (ITESM)
-</p>
-<p>
-Instituto Tecnológico y de Estudios Superiores de Monterrey                                     1998 – 2003
-Bachelor Computer Science, Artificial Intelligence
-Summa Cum Laude
-Activities and Societies: ACM Collegiate Programming Contest (ITESM), RoboCup (ITESM)
-</p>
-
-</div>
-</div>
+  <div class="card">
+    <!-- <h1>Raziel Alvarez</h1> -->
+    <div class="visual">
+      <img class="circular--square" src="https://pbs.twimg.com/profile_images/1138575167075028995/jnzCixDK_400x400.jpg" />
+      <div class="text-block">
+        <h1>Raziel Alvarez</h1>
+        <h4>Software Engineer</h4>
+      </div>
+    </div>
+    <p>Descriptive Text. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed est error repellat veritatis.</p>
+    <br/>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eveniet beatae veritatis saepe corporis voluptates illo placeat maxime sapiente. Sit facere cumque quidem ad quo, dolores pariatur repudiandae ullam animi?</p>
+    <!-- collapsible panel -->
+    <div class="container">
+<!--       <h2>Collapsible Panel</h2>
+      <p>Click on the collapsible panel to open and close it.</p>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">Panel Body</div>
+            <div class="panel-footer">Panel Footer</div>
+          </div>
+        </div>
+      </div> -->
+      <h2>Accordion Example</h2>
+      <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">I am an engineer ...</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
 </body>
 </html>
