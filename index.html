@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body {
       font-family: 'Raleway', sans-serif;
@@ -19,6 +20,7 @@
       display: grid;
       place-items: center;
       height: 100vh;
+      background-color: rgba(249, 249, 249);
     }
 
     .visual {
@@ -28,20 +30,28 @@
       background-image: url(https://pbs.twimg.com/profile_banners/92436265/1560292447/600x200);
       margin: 0.5rem 0;
       position: relative;
+      border-radius: 5px;
     }
 
     .card {
       width: clamp(45ch, 50%, 75ch);
       display: flex;
       flex-direction: column;
-      background: lightpink;
+      /*background: rgba(239, 220, 190, 1.0);*/
+      /*background: rgba(50, 82, 123, 0.5);*/
+      background: rgba(188, 143, 143, 1.0);
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25));
       padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
     }
     /*collapsible panel*/
     .container {
       max-width: 100%;
       /*margin: auto;*/
-      background: white;
+      /*background: white;*/
+      /*background: rgba(193, 154, 107);*/
+      background: rgba(251, 247, 245);
       /*padding: 10px;*/
     }
     /*profile image*/
@@ -60,8 +70,49 @@
       top: 0px;
       right: 5px;
       color: white;
+      /*background: rgba(193, 154, 107, 0.9);*/
+      background: rgba(188, 143, 143, 0.95);
+      /*background: rgba(251, 247, 245, 0.9);*/
+      /*background: rgba(50, 82, 123, 0.8);*/
+      padding: 0px 10px 5px 10px;
+      margin: 10px 10px 0 0;
+      border-radius: 25px;
+      border: 2px solid white;
     /*  padding-left: 20px;
       padding-right: 20px;*/
+    }
+    /*social panel*/
+    .social {
+      display: grid;
+      place-items: end;
+      height: 50px;
+    }
+    .social-img {
+      width: 100px;
+      text-align: right;
+      padding: 10px;
+    }
+    .fa, .fa:visited, .fa:active {
+      font-size: 20px;
+      width: 25px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      transition: color 0.2s ease-in-out;
+    }
+    .fa.fa-twitter:hover {
+      opacity: 0.7;
+      text-decoration: none;
+      color: #55ACEE;
+    }
+    .fa.fa-linkedin:hover {
+      opacity: 0.7;
+      text-decoration: none;
+      color: #007bb5;
+    }
+    /*Introduction*/
+    .intro {
+      padding: 20px 0px 5px 0px;
     }
   </style>
 </head>
@@ -75,9 +126,15 @@
         <h4>Software Engineer</h4>
       </div>
     </div>
-    <p>Descriptive Text. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed est error repellat veritatis.</p>
-    <br/>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eveniet beatae veritatis saepe corporis voluptates illo placeat maxime sapiente. Sit facere cumque quidem ad quo, dolores pariatur repudiandae ullam animi?</p>
+    <div class="social">
+      <span class="social-img">
+        <a href="https://twitter.com/razielag" rel="noopener noreferrer" target="_blank" class="fa fa-twitter"></a>
+        <a href="#" rel="noopener noreferrer" target="_blank" class="fa fa-linkedin"></a>
+      </span>
+    </div>
+    <div class="intro">
+      <p>Lead of @tensorflow model optimization and Co-founder of TensorFlow Lite @googleai. R&D of Speech technologies @google.</p>
+    </div>
     <!-- collapsible panel -->
     <div class="container">
 <!--       <h2>Collapsible Panel</h2>
