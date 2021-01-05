@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Raleway:wght@100;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Raleway:wght@100;400;600&display=swap" rel="stylesheet">
   <!--  collapsible panel  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,6 +11,7 @@
   <style>
     body {
       font-family: 'Raleway', sans-serif;
+      font-weight: 400;
     }
     h1 {
       font-family: 'Josefin Sans', sans-serif;
@@ -68,6 +69,7 @@
       /*background: white;*/
       /*background: rgba(193, 154, 107);*/
       background: rgba(251, 247, 245);
+      border-radius: 5px;
       /*padding: 10px;*/
     }
     /*profile image*/
@@ -134,7 +136,6 @@
 </head>
 <body>
   <div class="card">
-    <!-- <h1>Raziel Alvarez</h1> -->
     <div class="visual">
       <img class="circular--square" src="https://pbs.twimg.com/profile_images/1138575167075028995/jnzCixDK_400x400.jpg" />
       <div class="text-block">
@@ -149,7 +150,12 @@
       </span>
     </div>
     <div class="intro">
-      <p>Lead of @tensorflow model optimization and Co-founder of TensorFlow Lite @googleai. R&D of Speech technologies @google.</p>
+      <h4>
+        Tech Lead of PyTorch at Facebook.
+      </h4>
+      <p>
+        Particularly focused on framework portability across devices, as well as Machine Learning optimization techniques.
+      </p>
     </div>
     <!-- collapsible panel -->
     <div class="container">
@@ -168,13 +174,24 @@
           </div>
         </div>
       </div> -->
-      <h2>Accordion Example</h2>
-      <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+      <h4>tl;dr;</h4>
+      <p>
+        <b>I’m a pragmatic engineer</b> in constant search for the balance between beautiful, universal solutions and impact in the real world.
+      </p>
+      <p>
+        <b>Today I do this as part of the PyTorch team</b> at Facebook<a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" class="fa fa-facebook" aria-hidden="true" style="color:navy;text-decoration:none;"></a>, developing a machine learning framework that powers state of the art research, and helps bring that research to products across an ever increasing number of fields.
+      </p>
+      <p>
+        <b>Previously, I spent 8 years at Google<a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" class="fa fa-google" aria-hidden="true" style="color:blue;text-decoration:none;"></a> also developing machine learning frameworks</b>, like TensorFlow, that powered billions of users in Google and other companies' applications. <b>I also participated in research applied to Google’s products</b>, such as the Assistant, where I worked in Speech Reconition and developed technologies that power "Hey Google". Oh, and my first few months I worked on the Fonts project that I use on this site.
+      </p>
+      <p>
+        <b>Prior to that I spent 7 years at Appian<a href="https://www.appian.com/" rel="noopener noreferrer" target="_blank" class="fa" aria-hidden="true" style="color:red;text-decoration:none;">A</a></b>, where I lead a number of projects, most significantly co-authoring the SAIL (Self-Assembling Interface Layer) technology which underpins the company’s low-code platform.
+      </p>
       <div class="panel-group" id="accordion">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">I am an engineer ...</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">These are some recent projects I've been involved in</a>
             </h4>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
@@ -186,7 +203,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">And some patents and publications</a>
             </h4>
           </div>
           <div id="collapse2" class="panel-collapse collapse">
@@ -198,7 +215,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">I went to school in Mexico</a>
             </h4>
           </div>
           <div id="collapse3" class="panel-collapse collapse">
