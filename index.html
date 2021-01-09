@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400&family=Raleway:wght@100;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;600&family=Raleway:wght@100;400;600&display=swap" rel="stylesheet">
   <!--  collapsible panel  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -15,6 +15,10 @@
     }
     h1 {
       font-family: 'Josefin Sans', sans-serif;
+    }
+    h5 {
+      font-size: 15px;
+      font-weight: 600;
     }
     @media screen and (min-width: 901px) {
       h1 {
@@ -197,22 +201,34 @@
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body">
-              <ul>
-                <li>Introducing the Model Optimization Toolkit for Tensorflow</li>
-                <li>TensorFlow Model Optimization Toolkit—Pruning API</li>
-                <li>TensorFlow Model Optimization Toolkit—Post-Training Integer Quantization</li>
-                <li>TensorFlow Model Optimization Toolkit—Post-training reduced-precision fp16 quantization</li>
-                <li>TensorFlow Model Optimization Toolkit—Quantization Aware Training API</li>
-                <li>New TFLite converter</li>
-                <li>TensorFlow operation fusion in the TensorFlow Lite converter</li>
-                <li>TensorFlow Model Optimization Toolkit — Weight Clustering API</li>   
-                <li>An All-Neural On-Device Speech Recognizer</li>
-                <li>ML Kit expands into NLP with Language Identification and Smart Reply</li>
-                <li>EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</li>
-                <li>Coral summer updates: Post-training quant support, TF Lite delegate, and new models!</li>
-                <li>Higher accuracy on vision models with EfficientNet-Lite</li>
-                <li>Accelerating TensorFlow Lite with XNNPACK Integration</li>   
+              <h5>Founded the <a href="https://www.tensorflow.org/model_optimization" rel="noopener noreferrer" target="_blank">TensorFlow Model optimization toolkit</a>.</h5>
+              <p>A suite of tools for optimizing machine learning models for deployment and execution, via easy to use and consistent APIs implementing powerful machine learning optimization techniques.</p>
+              <p>Selected posts I was involved in:</p>
+              <ul style="list-style-type:none;">
+                <li>📰 Introducing the Model Optimization Toolkit for Tensorflow</li>
+                <li>📰 TensorFlow Model Optimization Toolkit—Pruning API</li>
+                <li>📰 TensorFlow Model Optimization Toolkit—Post-Training Integer Quantization - blog</li>
+                <li>📰 TensorFlow Model Optimization Toolkit—Post-training reduced-precision fp16 quantization</li>
+                <li>📰 TensorFlow Model Optimization Toolkit—Quantization Aware Training API</li>
+                <li>📰 EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</li>
+                <li>📰 Coral summer updates: Post-training quant support, TF Lite delegate, and new models!</li>
               </ul>
+              <h5>Co-Founded <a href="https://www.tensorflow.org/lite" rel="noopener noreferrer" target="_blank">TensorFlow Lite</a>.</h5>
+              <p>Google's open source deep learning framework for on-device machine learning. It has billions of installs, from mobile phones, smart displays and speakers, to cars and wearables, powering Google's and other companies products.</p> 
+              <p>Selected posts I was involved in:</p>
+              <ul style="list-style-type:none;">
+                <li>📰 Announcing TensorFlow Lite</li>
+                <li>📰 New TFLite converter</li>
+                <li>📰 TensorFlow operation fusion in the TensorFlow Lite converter</li>
+                <li>📰 TensorFlow Model Optimization Toolkit — Weight Clustering API</li>   
+                <li>📰 An All-Neural On-Device Speech Recognizer</li>
+                <li>📰 ML Kit expands into NLP with Language Identification and Smart Reply</li>
+                <li>📰 Higher accuracy on vision models with EfficientNet-Lite</li>
+                <li>📰 Accelerating TensorFlow Lite with XNNPACK Integration</li>
+              </ul>
+              <h5>Google On-device speech recognition</h5>
+              <p>I worked in the Google speech team to bring speech and related technologies to work entirely on-device. I was part of the team that developed the very-low-power <a href="https://arxiv.org/abs/1712.03603" rel="noopener noreferrer" target="_blank">"hey Google" capabilities</a> across devices, and developed the first <a href="https://arxiv.org/abs/1812.02802" rel="noopener noreferrer" target="_blank">end-to-end system</a> (and latest iteration of the ML model). I also developed the pre-TensorFlow ML inference engine that brought a new generation of <a href="https://ai.googleblog.com/2019/03/an-all-neural-on-device-speech.html" rel="noopener noreferrer" target="_blank">speech recognizers</a>, <a href="https://arxiv.org/abs/1606.06061" rel="noopener noreferrer" target="_blank">text-to-speech generators</a>, and <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43461.pdf" rel="noopener noreferrer" target="_blank">keyboard technology</a> on-device.</p>
+              <p>This infrastructure, along with many techniques I implemented, promoted and refined --such as quantization, sparsity, and the replacement of vanilla LSTMs for Coupled Input-Forget Gate (CIFG) variant (introduced <a href="https://arxiv.org/abs/1503.04069" rel="noopener noreferrer" target="_blank">here</a>)-- became the foudation of newer infrastructure and production models.</p>
             </div>
           </div>
         </div>
