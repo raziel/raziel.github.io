@@ -5,8 +5,6 @@
   <!--  collapsible panel  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body {
@@ -39,7 +37,7 @@
     /*links*/
     .link-arrow {
       text-decoration:none;
-      color:blue;
+      color:#5E5452;
       font-weight:600;
     }
     /*card*/
@@ -47,7 +45,7 @@
       display: grid;
       place-items: center;
       height: 100vh;
-      background-color: rgba(249, 249, 249);
+      background-color: #E8E8E1;
     }
 
     .visual {
@@ -66,19 +64,20 @@
       flex-direction: column;
       /*background: rgba(239, 220, 190, 1.0);*/
       /*background: rgba(50, 82, 123, 0.5);*/
-      background: rgba(188, 143, 143, 1.0);
+      background: #5E5452;
       background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25));
       padding: 1rem;
       border-radius: 15px;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
     }
     /*collapsible panel*/
-    .container {
+    .content-panel {
       max-width: 100%;
       /*margin: auto;*/
       /*background: white;*/
       /*background: rgba(193, 154, 107);*/
-      background: rgba(251, 247, 245);
+      background: #E8E8E1;
+      color: #5E5452;
       border-radius: 5px;
       /*padding: 10px;*/
     }
@@ -87,7 +86,7 @@
       border-radius: 50%;
       height: 100%;
       align-content: center;
-      border: 3px solid white;
+      border: 3px solid #E8E8E1;
       margin-top: 60px;
       margin-left: 15px;
     }
@@ -99,13 +98,13 @@
       right: 5px;
       color: white;
       /*background: rgba(193, 154, 107, 0.9);*/
-      background: rgba(188, 143, 143, 0.95);
+      background: #5E5452;
       /*background: rgba(251, 247, 245, 0.9);*/
       /*background: rgba(50, 82, 123, 0.8);*/
       padding: 0px 10px 5px 10px;
       margin: 10px 10px 0 0;
       border-radius: 25px;
-      border: 2px solid white;
+      border: 2px solid #E8E8E1;
     /*  padding-left: 20px;
       padding-right: 20px;*/
     }
@@ -128,10 +127,19 @@
       color: white;
       transition: color 0.2s ease-in-out;
     }
-    .fa.fa-twitter:hover {
+    .fa.fa-x {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .fa.fa-x svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+    .fa.fa-x:hover {
       opacity: 0.7;
       text-decoration: none;
-      color: #55ACEE;
     }
     .fa.fa-linkedin:hover {
       opacity: 0.7;
@@ -141,6 +149,30 @@
     /*Introduction*/
     .intro {
       padding: 20px 0px 5px 0px;
+      color: #E8E8E1;
+    }
+    .clean-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.5rem 0 1rem;
+    }
+    .clean-list li {
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .clean-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #5E5452;
+    }
+    .clean-list a {
+      color: #5E5452;
+      text-decoration: none;
+    }
+    .clean-list a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -156,7 +188,7 @@
     </div>
     <div class="social">
       <span class="social-img">
-        <a href="https://twitter.com/razielag" rel="noopener noreferrer" target="_blank" class="fa fa-twitter"></a>
+        <a href="https://twitter.com/razielag" rel="noopener noreferrer" target="_blank" class="fa fa-x" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         <a href="https://www.linkedin.com/in/razielalvarez" rel="noopener noreferrer" target="_blank" class="fa fa-linkedin"></a>
       </span>
     </div>
@@ -169,7 +201,7 @@
       </p>
     </div>
     <!-- collapsible panel -->
-    <div class="container">
+    <div class="content-panel">
 <!--       <h2>Collapsible Panel</h2>
       <p>Click on the collapsible panel to open and close it.</p>
       <div class="panel-group">
@@ -213,38 +245,38 @@
               <h5>Founded <a href="https://docs.pytorch.org/executorch-overview" rel="noopener noreferrer" target="_blank">PyTorch's Executorch</a>.</h5>
               <p>An end-to-end solution for enabling on-device inference capabilities across mobile and edge devices including wearables, embedded devices and microcontrollers. It is part of the PyTorch Edge ecosystem and enables efficient deployment of various PyTorch models (vision, speech, Generative AI, and more) to edge devices.</p>
               <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://pytorch.org/edge" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Redefined the strategy for PyTorch's own on-device ML suite: "PyTorch Edge" </li>
-                <li><a href="https://pytorch.org/executorch-overview" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Created the vision and strategy for ExecuTorch</li>
-                <li><a href="https://pytorch.org/executorch/stable/getting-started-architecture.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Defined the ExecuTorch technical architecture</li>
-                <li><a href="https://pytorch.org/executorch/stable/concepts.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Defined the relationship and integration of PyTorch Core, Intermediate Representations, the new 2.0 APIs and ExecuTorch's</li>
-                <li><a href="https://pytorch.org/docs/main/export.ir_spec.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Key contributor to define PyTorch's torch.export IR</li>
-                <li><a href="https://pytorch.org/executorch/stable/ir-exir.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Key contributor to define PyTorch's EXIR dialects</li>                
-                <li><a href="https://pytorch.org/executorch/stable/quantization-overview.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Redefined the strategy and architecture ot PyTorch's Architecture Optimization and ML optimization around torch.export</li>
-                <li><a href="https://www.entrepreneur.com/business-news/mark-zuckerberg-braids-his-daughters-hair-using-ai-video/463899" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Worked on the first embedded use of ExecuTorch within Meta's smart classes</li>
+              <ul class="clean-list">
+                <li><a href="https://pytorch.org/edge" rel="noopener noreferrer" target="_blank">Redefined the strategy for PyTorch's own on-device ML suite: "PyTorch Edge"</a></li>
+                <li><a href="https://pytorch.org/executorch-overview" rel="noopener noreferrer" target="_blank">Created the vision and strategy for ExecuTorch</a></li>
+                <li><a href="https://pytorch.org/executorch/stable/getting-started-architecture.html" rel="noopener noreferrer" target="_blank">Defined the ExecuTorch technical architecture</a></li>
+                <li><a href="https://pytorch.org/executorch/stable/concepts.html" rel="noopener noreferrer" target="_blank">Defined the relationship and integration of PyTorch Core, Intermediate Representations, the new 2.0 APIs and ExecuTorch's</a></li>
+                <li><a href="https://pytorch.org/docs/main/export.ir_spec.html" rel="no>opener noreferrer" target="_blank">Key contributor to define PyTorch's torch.export IR</a></li>
+                <li><a href="https://pytorch.org/executorch/stable/ir-exir.html" rel="no>opener noreferrer" target="_blank">Key contributor to define PyTorch's EXIR dialects</a></li>
+                <li><a href="https://pytorch.org/executorch/stable/quantization-overview.html" rel="noopener noreferrer" target="_blank">Redefined the strategy and architecture ot PyTorch's Architecture Optimization and ML optimization around torch.export</a></li>
+                <li><a href="https://www.entrepreneur.com/business-news/mark-zuckerberg-braids-his-daughters-hair-using-ai-video/463899" rel="noopener noreferrer" target="_blank">Worked on the first embedded use of ExecuTorch within Meta's smart classes</a></li>
               </ul>
               <h5>Founded the <a href="https://www.tensorflow.org/model_optimization" rel="noopener noreferrer" target="_blank">TensorFlow Model optimization toolkit</a>.</h5>
               <p>A suite of tools for optimizing machine learning models for deployment and execution, via easy to use and consistent APIs implementing powerful machine learning optimization techniques.</p>
               <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Introducing the Model Optimization Toolkit for Tensorflow</li>
-                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-pruning-api-42cac9157a6a" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Pruning API</li>
-                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-post-training-integer-quantization-b4964a1ea9ba" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Post-Training Integer Quantization - blog</li>
-                <li><a href="https://medium.com/tensorflow/ten>sorflow-model-optimization-toolkit-float16-quantization-halves-model-size-cc113c75a2fa" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Post-training reduced-precision fp16 quantization</li>
-                <li><a href="https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Quantization Aware Training API</li>
-                <li><a href="https://ai.googleblog.com/2019/08/efficientnet-edgetpu-creating.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</li>
-                <li><a href="https://developers.googleblog.com/2019/08/coral-summer-updates-post-training.html?linkId=71630844" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Coral summer updates: Post-training quant support, TF Lite delegate, and new models!</li>
-                <li><a href="https://blog.tensorflow.org/2020/08/tensorflow-model-optimization-toolkit-weight-clustering-api.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit — Weight Clustering API</li>
+              <ul class="clean-list">
+                <li><a href="https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3" rel="noopener noreferrer" target="_blank">Introducing the Model Optimization Toolkit for Tensorflow</a></li>
+                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-pruning-api-42cac9157a6a" rel="noopener noreferrer" target="_blank">TensorFlow Model Optimization Toolkit—Pruning API</a></li>
+                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-post-training-integer-quantization-b4964a1ea9ba" rel="noopener noreferrer" target="_blank">TensorFlow Model Optimization Toolkit—Post-Training Integer Quantization - blog</a></li>
+                <li><a href="https://medium.com/tensorflow/ten>sorflow-model-optimization-toolkit-float16-quantization-halves-model-size-cc113c75a2fa" rel="noopener noreferrer" target="_blank">TensorFlow Model Optimization Toolkit—Post-training reduced-precision fp16 quantization</a></li>
+                <li><a href="https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html" rel="no>opener noreferrer" target="_blank">TensorFlow Model Optimization Toolkit—Quantization Aware Training API</a></li>
+                <li><a href="https://ai.googleblog.com/2019/08/efficientnet-edgetpu-creating.html" rel="noopener noreferrer" target="_blank">EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</a></li>
+                <li><a href="https://developers.googleblog.com/2019/08/coral-summer-updates-post-training.html?linkId=71630844" rel="noopener noreferrer" target="_blank">Coral summer updates: Post-training quant support, TF Lite delegate, and new models!</a></li>
+                <li><a href="https://blog.tensorflow.org/2020/08/tensorflow-model-optimization-toolkit-weight-clustering-api.html" rel="noopener noreferrer" target="_blank">TensorFlow Model Optimization Toolkit — Weight Clustering API</a></li>
               </ul>
               <h5>Co-Founded <a href="https://www.tensorflow.org/lite" rel="noopener noreferrer" target="_blank">TensorFlow Lite</a>.</h5>
               <p>Google's open source deep learning framework for on-device machine learning. It has billions of installs, from mobile phones, smart displays and speakers, to cars and wearables, powering Google's and other companies products.</p> 
               <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://developers.googleblog.com/2017/11/announcing-tensorflow-lite.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Announcing TensorFlow Lite</li>
-                <li><a href="https://blog.tensorflow.org/2020/07/tensorflow-operation-fusion-in-tensorflow-lite-converter.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow operation fusion in the TensorFlow Lite converter</li>
-                <li><a href="https://firebase.googleblog.com/2019/04/ml-kit-expands-into-nlp.html?utm_source=dlvr.it&utm_medium=twitter" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> ML Kit expands into NLP with Language Identification and Smart Reply</li>
-                <li><a href="https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Higher accuracy on vision models with EfficientNet-Lite</li>
-                <li><a href="https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Accelerating TensorFlow Lite with XNNPACK Integration</li>
+              <ul class="clean-list">
+                <li><a href="https://developers.googleblog.com/2017/11/announcing-tensorflow-lite.html" rel="noopener noreferrer" target="_blank">Announcing TensorFlow Lite</a></li>
+                <li><a href="https://blog.tensorflow.org/2020/07/tensorflow-operation-fusion-in-tensorflow-lite-converter.html" rel="noopener noreferrer" target="_blank">TensorFlow operation fusion in the TensorFlow Lite converter</a></li>
+                <li><a href="https://firebase.googleblog.com/2019/04/ml-kit-expands-into-nlp.html?utm_source=dlvr.it&utm_medium=twitter" rel="noopener noreferrer" target="_blank">ML Kit expands into NLP with Language Identification and Smart Reply</a></li>
+                <li><a href="https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html" rel="noopener noreferrer" target="_blank">Higher accuracy on vision models with EfficientNet-Lite</a></li>
+                <li><a href="https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html" rel="noopener noreferrer" target="_blank">Accelerating TensorFlow Lite with XNNPACK Integration</a></li>
               </ul>
               <h5>Google On-device speech recognition</h5>
               <p>I worked in the Google speech team to bring speech and related technologies to work entirely on-device. I was part of the team that developed the very-low-power <a href="https://arxiv.org/abs/1712.03603" rel="noopener noreferrer" target="_blank">"hey Google" capabilities</a> across devices, where I developed the first <a href="https://arxiv.org/abs/1812.02802" rel="noopener noreferrer" target="_blank">end-to-end system</a> (and latest iteration of the ML model). I also built the pre-TensorFlow ML inference engine that brought a new generation of <a href="https://ai.googleblog.com/2019/03/an-all-neural-on-device-speech.html" rel="noopener noreferrer" target="_blank">speech recognizers</a>, <a href="https://arxiv.org/abs/1606.06061" rel="noopener noreferrer" target="_blank">text-to-speech generators</a>, and <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43461.pdf" rel="noopener noreferrer" target="_blank">keyboard technology</a> on-device.</p>
@@ -261,7 +293,7 @@
           <div id="collapse2" class="panel-collapse collapse">
             <div class="panel-body">
               <h5>Publications</h5>
-              <ul>
+              <ul class="clean-list">
                 <li>Lico-net: Linearized convolution network for hardware-efficient keyword spotting <a href="https://arxiv.org/abs/2211.04635" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
                 <li>On the quantization of recurrent neural networks <a href="https://arxiv.org/abs/2101.05453" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
                 <li>A streaming on-device end-to-end model surpassing server-side conventional model quality and latency <a href="https://arxiv.org/abs/2003.12710" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
@@ -308,5 +340,14 @@
       </div> 
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $('#accordion').on('show.bs.collapse', function (e) {
+        $(this).find('.panel-collapse.in').not(e.target).collapse('hide');
+      });
+    });
+  </script>
 </body>
 </html>
