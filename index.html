@@ -1,309 +1,938 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;600&family=Raleway:wght@100;400;600&display=swap" rel="stylesheet">
-  <!--  collapsible panel  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raziel Alvarez</title>
   <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e8e8e4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #0055c4;
+      --accent-light: #e8f0fc;
+      --tag-bg: #f0f0ec;
+      --hero-bg: #0f1117;
+      --hero-text: #f0f0ec;
+      --hero-muted: #9ca3af;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Raleway', sans-serif;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      padding: 72px 0 64px;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-photo {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,.15);
+      background: #2a2a3a;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo .initials {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.7);
+      letter-spacing: -.02em;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 1rem;
+      color: var(--hero-muted);
+      margin-bottom: 16px;
       font-weight: 400;
     }
-    h1 {
-      font-family: 'Josefin Sans', sans-serif;
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: rgba(240,240,236,.85);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 28px;
     }
-    h5 {
-      font-size: 15px;
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--hero-text);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      transition: background .15s;
+    }
+    .hero-links a:hover { background: rgba(255,255,255,.18); text-decoration: none; }
+
+    /* ── TL;DR ── */
+    .tldr-block {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+
+    .tldr-block p { font-size: 1rem; color: #1a2a4a; line-height: 1.75; }
+    .tldr-block p + p { margin-top: 12px; }
+
+    .tldr-block strong { font-weight: 700; color: #0a1a3a; }
+
+    .tldr-note {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .tldr-note + .tldr-note { margin-top: 12px; }
+
+    /* ── Company badges ── */
+    .company-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: .82rem;
       font-weight: 600;
-    }
-    @media screen and (min-width: 901px) {
-      h1 {
-        font-size: 35px;
-      }
-      .text-block > h4 {
-        font-size: 20px;
-      }
-    }
-    @media screen and (max-width: 900px) {
-      h1 {
-        font-size: 20px;
-      }
-      .text-block > h4 {
-        font-size: 12px;
-      }
-    }
-    /*links*/
-    .link-arrow {
-      text-decoration:none;
-      color:blue;
-      font-weight:600;
-    }
-    /*card*/
-    body {
-      display: grid;
-      place-items: center;
-      height: 100vh;
-      background-color: rgba(249, 249, 249);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
     }
 
-    .visual {
-      height: 150px;
-      width: 100%;
-      background: lightgray;
-      background-image: url(https://raziel.github.io/rope_background.jpeg);
-      margin: 0.5rem 0;
-      position: relative;
-      border-radius: 5px;
+    .badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
     }
 
-    .card {
-      width: clamp(45ch, 50%, 75ch);
+    .badge.apple  .badge-dot { background: #555; }
+    .badge.meta   .badge-dot { background: #0082fb; }
+    .badge.google .badge-dot { background: #34a853; }
+    .badge.appian .badge-dot { background: #e35b18; }
+
+    /* ── Projects ── */
+    .projects-grid {
       display: flex;
       flex-direction: column;
-      /*background: rgba(239, 220, 190, 1.0);*/
-      /*background: rgba(50, 82, 123, 0.5);*/
-      background: rgba(188, 143, 143, 1.0);
-      background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25));
-      padding: 1rem;
-      border-radius: 15px;
-      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+      gap: 28px;
     }
-    /*collapsible panel*/
-    .container {
-      max-width: 100%;
-      /*margin: auto;*/
-      /*background: white;*/
-      /*background: rgba(193, 154, 107);*/
-      background: rgba(251, 247, 245);
-      border-radius: 5px;
-      /*padding: 10px;*/
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
-    /*profile image*/
-    .circular--square {
-      border-radius: 50%;
-      height: 100%;
-      align-content: center;
-      border: 3px solid white;
-      margin-top: 60px;
-      margin-left: 15px;
+
+    .project-header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
     }
-    /* Bottom right text */
-    .text-block {
-      position: absolute;
-      /*bottom: 0px;*/
-      top: 0px;
-      right: 5px;
-      color: white;
-      /*background: rgba(193, 154, 107, 0.9);*/
-      background: rgba(188, 143, 143, 0.95);
-      /*background: rgba(251, 247, 245, 0.9);*/
-      /*background: rgba(50, 82, 123, 0.8);*/
-      padding: 0px 10px 5px 10px;
-      margin: 10px 10px 0 0;
-      border-radius: 25px;
-      border: 2px solid white;
-    /*  padding-left: 20px;
-      padding-right: 20px;*/
+
+    .project-company {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
-    /*social panel*/
-    .social {
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -.02em;
+    }
+
+    .project-title a { color: inherit; }
+    .project-title a:hover { color: var(--accent); text-decoration: none; }
+
+    .project-desc {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-links {
+      padding: 16px 32px 20px;
+    }
+
+    .project-links-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: .88rem;
+    }
+
+    .link-list li::before {
+      content: "→";
+      color: var(--accent);
+      flex-shrink: 0;
+      font-size: .8rem;
+    }
+
+    .link-list a { color: var(--text); }
+    .link-list a:hover { color: var(--accent); }
+
+    /* ── Timeline ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
       display: grid;
-      place-items: end;
-      height: 50px;
+      grid-template-columns: 120px 1fr;
+      gap: 0 28px;
+      position: relative;
     }
-    .social-img {
-      width: 100px;
+
+    .timeline-item + .timeline-item { margin-top: 36px; }
+
+    .timeline-left {
+      padding-top: 4px;
       text-align: right;
-      padding: 10px;
     }
-    .fa, .fa:visited, .fa:active {
-      font-size: 20px;
-      width: 25px;
+
+    .timeline-period {
+      font-size: .8rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .timeline-right {
+      padding-left: 20px;
+      border-left: 2px solid var(--border);
+      position: relative;
+    }
+
+    .timeline-right::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-company {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 2px;
+    }
+
+    .timeline-company a { color: inherit; }
+    .timeline-company a:hover { color: var(--accent); text-decoration: none; }
+
+    .timeline-role {
+      font-size: .88rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .timeline-desc {
+      font-size: .93rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: .75rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--muted);
+    }
+
+    /* ── Highlights grid ── */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 0;
+    }
+
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+    }
+
+    .highlight-card .num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .highlight-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--hero-bg);
+      color: var(--hero-muted);
+      padding: 32px 24px;
       text-align: center;
-      text-decoration: none;
-      color: white;
-      transition: color 0.2s ease-in-out;
+      font-size: .85rem;
     }
-    .fa.fa-twitter:hover {
-      opacity: 0.7;
+
+    footer a { color: rgba(240,240,236,.6); }
+    footer a:hover { color: var(--hero-text); }
+    
+    /* ── Patent pills ── */
+    .patent-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 600;
+      font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1.5px solid #c5d8f8;
+      transition: background .15s, border-color .15s;
       text-decoration: none;
-      color: #55ACEE;
+      white-space: nowrap;
     }
-    .fa.fa-linkedin:hover {
-      opacity: 0.7;
+    .patent-pill:hover {
+      background: #d6e6fc;
+      border-color: var(--accent);
       text-decoration: none;
-      color: #007bb5;
     }
-    /*Introduction*/
-    .intro {
-      padding: 20px 0px 5px 0px;
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .hero-photo { width: 80px; height: 80px; }
+      .hero-text h1 { font-size: 1.9rem; }
+
+      .tldr-block { padding: 20px 20px; }
+
+      .project-header, .project-links { padding-left: 20px; padding-right: 20px; }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .timeline-left { text-align: left; padding-top: 0; }
+      .timeline-right {
+        border-left: none;
+        padding-left: 0;
+      }
+      .timeline-right::before { display: none; }
+
+      section { padding: 48px 0; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="visual">
-      <!-- <img class="circular--square" src="https://pbs.twimg.com/profile_images/1138575167075028995/jnzCixDK_400x400.jpg" /> -->
-      <img class="circular--square" src="https://raziel.github.io/profile_pic.jpg" />
-      <div class="text-block">
-        <h1>Raziel Alvarez</h1>
-        <h4>Software Engineer</h4>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <img
+        src="https://github.com/raziel.png"
+        alt="Raziel Alvarez"
+        onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='flex';"
+      />
+      <div class="initials" style="display:none;">RA</div>
+    </div>
+    <div class="hero-text">
+      <h1>Raziel Alvarez</h1>
+      <p class="hero-title">Lead AI/ML Infrastructure for Apple Platforms</p>
+      <p class="hero-tagline">
+        I lead the team and architect the infrastructure for developing and
+        deploying AI/ML across Apple's devices — with frameworks like
+        Core AI and Core ML.
+      </p>
+      <div class="hero-links">
+        <a href="https://twitter.com/razielag" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.632 5.903-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @razielag
+        </a>
+        <a href="https://www.linkedin.com/in/razielalvarez" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/raziel" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
-    <div class="social">
-      <span class="social-img">
-        <a href="https://twitter.com/razielag" rel="noopener noreferrer" target="_blank" class="fa fa-twitter"></a>
-        <a href="https://www.linkedin.com/in/razielalvarez" rel="noopener noreferrer" target="_blank" class="fa fa-linkedin"></a>
-      </span>
+  </div>
+</header>
+
+<main>
+<div class="container">
+
+<!-- ══════════════════════════════════════════
+     AT A GLANCE
+══════════════════════════════════════════ 
+<section>
+  <h2>At a Glance</h2>
+  <div class="highlights">
+    <div class="highlight-card">
+      <div class="num">12+</div>
+      <p>Years building AI infrastructure</p>
     </div>
-    <div class="intro">
-      <h4>
-        Lead AI/ML Infrastructure for Apple Platforms
-      </h4>
-      <p>
-        I lead the team and architect the infrastructure for developing and deploying AI/ML across Apple's devices — with frameworks like Core AI and Core ML. This powers AI running on Apple's devices, from Apple Intelligence and Siri AI and many other Apple products (e.g. camera, health, ..) as well the ecosystem of app developers.
-      </p>
+    <div class="highlight-card">
+      <div class="num">3</div>
+      <p>Major AI frameworks founded or co-founded</p>
     </div>
-    <!-- collapsible panel -->
-    <div class="container">
-<!--       <h2>Collapsible Panel</h2>
-      <p>Click on the collapsible panel to open and close it.</p>
-      <div class="panel-group">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse">
-            <div class="panel-body">Panel Body</div>
-            <div class="panel-footer">Panel Footer</div>
-          </div>
-        </div>
-      </div> -->
-      <h4>tl;dr;</h4>
-      <p>
-        Over the past 15+ years, I've built the frameworks that run and deploy on-device AI — at Google, Meta, and Apple.
-      </p>
-      <p>
-        <b>At Apple</b><a href="https://www.apple.com/" rel="noopener noreferrer" target="_blank" class="fa fa-apple" aria-hidden="true" style="color:silver;text-decoration:none;"></a>, I founded and architected Core AI, and currently lead the project and the on-device infrastructure team. <b>At Meta</b> I was Tech Lead for PyTorch, where I founded and architected ExecuTorch — the framework used to deploy Meta's family of apps across Android and iOS, and to power AI on Meta's wearables. <b>At Google</b>, I served as Tech Lead in TensorFlow, co-founded TensorFlow Lite (now LiteRT), and built the internal frameworks running on-device AI for Google's early AI products, including Google Assistant (now Gemini).
-      </p>
-      <p>
-        I got into AI frameworks by trying to deploy my own team's speech recognition research at Google. What followed was 15 years of building infrastructure and keeping pace with research — particularly around deep learning optimization.
-      </p>
-      <p>
-        Along the way, I've played every role in building AI products: data gathering, applied research, framework development, hardware optimization, and influencing hardware roadmaps.
-      </p>
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">These are some recent projects I've been involved in</a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <h5>Founded <a href="https://docs.pytorch.org/executorch-overview" rel="noopener noreferrer" target="_blank">PyTorch's Executorch</a>.</h5>
-              <p>An end-to-end solution for enabling on-device inference capabilities across mobile and edge devices including wearables, embedded devices and microcontrollers. It is part of the PyTorch Edge ecosystem and enables efficient deployment of various PyTorch models (vision, speech, Generative AI, and more) to edge devices.</p>
-              <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://pytorch.org/edge" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Redefined the strategy for PyTorch's own on-device ML suite: "PyTorch Edge" </li>
-                <li><a href="https://pytorch.org/executorch-overview" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Created the vision and strategy for ExecuTorch</li>
-                <li><a href="https://pytorch.org/executorch/stable/getting-started-architecture.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Defined the ExecuTorch technical architecture</li>
-                <li><a href="https://pytorch.org/executorch/stable/concepts.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Defined the relationship and integration of PyTorch Core, Intermediate Representations, the new 2.0 APIs and ExecuTorch's</li>
-                <li><a href="https://pytorch.org/docs/main/export.ir_spec.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Key contributor to define PyTorch's torch.export IR</li>
-                <li><a href="https://pytorch.org/executorch/stable/ir-exir.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Key contributor to define PyTorch's EXIR dialects</li>                
-                <li><a href="https://pytorch.org/executorch/stable/quantization-overview.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Redefined the strategy and architecture ot PyTorch's Architecture Optimization and ML optimization around torch.export</li>
-                <li><a href="https://www.entrepreneur.com/business-news/mark-zuckerberg-braids-his-daughters-hair-using-ai-video/463899" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Worked on the first embedded use of ExecuTorch within Meta's smart classes</li>
-              </ul>
-              <h5>Founded the <a href="https://www.tensorflow.org/model_optimization" rel="noopener noreferrer" target="_blank">TensorFlow Model optimization toolkit</a>.</h5>
-              <p>A suite of tools for optimizing machine learning models for deployment and execution, via easy to use and consistent APIs implementing powerful machine learning optimization techniques.</p>
-              <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Introducing the Model Optimization Toolkit for Tensorflow</li>
-                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-pruning-api-42cac9157a6a" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Pruning API</li>
-                <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-post-training-integer-quantization-b4964a1ea9ba" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Post-Training Integer Quantization - blog</li>
-                <li><a href="https://medium.com/tensorflow/ten>sorflow-model-optimization-toolkit-float16-quantization-halves-model-size-cc113c75a2fa" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Post-training reduced-precision fp16 quantization</li>
-                <li><a href="https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html" rel="no>opener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit—Quantization Aware Training API</li>
-                <li><a href="https://ai.googleblog.com/2019/08/efficientnet-edgetpu-creating.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</li>
-                <li><a href="https://developers.googleblog.com/2019/08/coral-summer-updates-post-training.html?linkId=71630844" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Coral summer updates: Post-training quant support, TF Lite delegate, and new models!</li>
-                <li><a href="https://blog.tensorflow.org/2020/08/tensorflow-model-optimization-toolkit-weight-clustering-api.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow Model Optimization Toolkit — Weight Clustering API</li>
-              </ul>
-              <h5>Co-Founded <a href="https://www.tensorflow.org/lite" rel="noopener noreferrer" target="_blank">TensorFlow Lite</a>.</h5>
-              <p>Google's open source deep learning framework for on-device machine learning. It has billions of installs, from mobile phones, smart displays and speakers, to cars and wearables, powering Google's and other companies products.</p> 
-              <p>Selected work I was involved in:</p>
-              <ul style="list-style-type:none;">
-                <li><a href="https://developers.googleblog.com/2017/11/announcing-tensorflow-lite.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Announcing TensorFlow Lite</li>
-                <li><a href="https://blog.tensorflow.org/2020/07/tensorflow-operation-fusion-in-tensorflow-lite-converter.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> TensorFlow operation fusion in the TensorFlow Lite converter</li>
-                <li><a href="https://firebase.googleblog.com/2019/04/ml-kit-expands-into-nlp.html?utm_source=dlvr.it&utm_medium=twitter" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> ML Kit expands into NLP with Language Identification and Smart Reply</li>
-                <li><a href="https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Higher accuracy on vision models with EfficientNet-Lite</li>
-                <li><a href="https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html" rel="noopener noreferrer" target="_blank" aria-hidden="true" style="text-decoration:none;">📰</a> Accelerating TensorFlow Lite with XNNPACK Integration</li>
-              </ul>
-              <h5>Google On-device speech recognition</h5>
-              <p>I worked in the Google speech team to bring speech and related technologies to work entirely on-device. I was part of the team that developed the very-low-power <a href="https://arxiv.org/abs/1712.03603" rel="noopener noreferrer" target="_blank">"hey Google" capabilities</a> across devices, where I developed the first <a href="https://arxiv.org/abs/1812.02802" rel="noopener noreferrer" target="_blank">end-to-end system</a> (and latest iteration of the ML model). I also built the pre-TensorFlow ML inference engine that brought a new generation of <a href="https://ai.googleblog.com/2019/03/an-all-neural-on-device-speech.html" rel="noopener noreferrer" target="_blank">speech recognizers</a>, <a href="https://arxiv.org/abs/1606.06061" rel="noopener noreferrer" target="_blank">text-to-speech generators</a>, and <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43461.pdf" rel="noopener noreferrer" target="_blank">keyboard technology</a> on-device.</p>
-              <p>This infrastructure, along with many techniques I implemented, promoted and refined --such as quantization, sparsity, and the replacement of vanilla LSTMs for Coupled Input-Forget Gate (CIFG) variant (introduced <a href="https://arxiv.org/abs/1503.04069" rel="noopener noreferrer" target="_blank">here</a>)-- became the foudation of newer infrastructure and production models.</p>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">And some patents and publications</a>
-            </h4>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <div class="panel-body">
-              <h5>Publications</h5>
-              <ul>
-                <li>Lico-net: Linearized convolution network for hardware-efficient keyword spotting <a href="https://arxiv.org/abs/2211.04635" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>On the quantization of recurrent neural networks <a href="https://arxiv.org/abs/2101.05453" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>A streaming on-device end-to-end model surpassing server-side conventional model quality and latency <a href="https://arxiv.org/abs/2003.12710" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>End-to-end streaming keyword spotting <a href="https://arxiv.org/abs/1812.02802" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Optimizing speech recognition for the edge <a href="https://arxiv.org/abs/1909.12408" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Streaming end-to-end speech recognition for mobile devices <a href="https://arxiv.org/abs/1811.06621" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Lingvo: a modular and scalable framework for sequence-to-sequence modeling<a href="https://arxiv.org/abs/1902.08295?" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>A cascade architecture for keyword spotting on mobile devices <a href="https://arxiv.org/abs/1712.03603" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>On the efficient representation and execution of deep acoustic models <a href="https://arxiv.org/abs/1607.04683" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Personalized speech recognition on mobile devices <a href="https://arxiv.org/abs/1603.03185" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Automatic gain control and multi-style training for robust small-footprint keyword spotting with deep neural networks <a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43289.pdf" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Locally-connected and convolutional neural networks for small footprint speaker recognition <a href="https://research.google/pubs/pub43970/" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-                <li>Compressing deep neural networks using a rank-constrained topology <a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43813.pdf" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></li>
-              </ul>
-              <h5>Patents</h5>
-              <p>US-9767410B1 <a href="https://patents.google.com/patent/US9767410B1/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-9372675B1 <a href="https://patents.google.com/patent/US9372675B1/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-9542948B2 <a href="https://patents.google.com/patent/US9542948B2/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-9842608B2 <a href="https://patents.google.com/patent/US9842608B2/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-10460735B2<a href="https://patents.google.com/patent/US10460735B2/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, EP-3121809B1 <a href="https://patents.google.com/patent/EP3121809B1/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-20200126537A1 <a href="https://patents.google.com/patent/US20200126537A1/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, WO-2020092532A1 <a href="https://patents.google.com/patent/WO2020092532A1/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a>, US-9953216B2 <a href="https://patents.google.com/patent/US9953216B2/en" rel="noopener noreferrer" target="_blank" class="link-arrow">⬀</a></p>
-              <p>A more complete (and likely up to date) list at <a href="https://scholar.google.com/citations?user=FszLUOUAAAAJ" rel="noopener noreferrer" target="_blank">Google Scholar</a>.</p>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">I went to school in Mexico</a>
-            </h4>
-          </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">
-              <p>
-                [2003 – 2005] Instituto Tecnológico y de Estudios Superiores de Monterrey<br/>
-                Master in Computer Science, Artificial Intelligence, Image Processing, Robotics<br/>
-                Summa Cum Laude<br/>
-                Activities and Societies: ACM Collegiate Programming Contest <a href="https://icpc.global/" rel="noopener noreferrer" target="_blank" style="text-decoration:none;">🎈</a>, RoboCup World Cup <a href="https://www.robocup.org/" rel="noopener noreferrer" target="_blank" style="text-decoration:none;">⚽</a>, Research assistant
-              </p>
-              <p>
-                [1998 – 2003] Instituto Tecnológico y de Estudios Superiores de Monterrey<br/>
-                Bachelor Computer Science, Artificial Intelligence<br/>
-                Summa Cum Laude<br/>
-                Activities and Societies: ACM Collegiate Programming Contest <a href="https://icpc.global/" rel="noopener noreferrer" target="_blank" style="text-decoration:none;">🎈</a>, RoboCup World Cup <a href="https://www.robocup.org/" rel="noopener noreferrer" target="_blank" style="text-decoration:none;">⚽</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> 
+    <div class="highlight-card">
+      <div class="num">~Bs</div>
+      <p>Users reached by frameworks I built</p>
     </div>
   </div>
+</section>-->
+
+<!-- ══════════════════════════════════════════
+     TL;DR
+══════════════════════════════════════════ -->
+<section>
+  <h2>TL;DR</h2>
+  <div class="tldr-block">
+    <p>
+      Over the past 12+ years, I've built the frameworks that run and deploy
+      on-device AI — at Google, Meta, and Apple.
+    </p>
+    <p>
+      <strong>At Apple</strong>, I founded and architected Core AI, and currently
+      lead the project and the on-device infrastructure team.
+      <strong>At Meta</strong>, I was Tech Lead for PyTorch, where I founded and
+      architected ExecuTorch — the framework used to deploy Meta's family of apps
+      across Android and iOS, and to power AI on Meta's wearables.
+      <strong>At Google</strong>, I was part of Google Brain and served as Tech Lead
+       in TensorFlow, co-founded TensorFlow Lite (now LiteRT), and built the internal
+       frameworks running on-device AI for Google's early AI products, including Google
+       Assistant (now Gemini).
+    </p>
+  </div>
+  <p class="tldr-note">
+    I got into AI frameworks by trying to deploy my own team's speech recognition
+    research at Google. What followed was over a decade of building infrastructure and
+    keeping pace with research — particularly around deep learning optimization.
+  </p>
+  <p class="tldr-note">
+    Along the way, I've played every role: data gathering, applied research,
+    framework development, hardware optimization, and influencing hardware roadmaps.
+  </p>
+  <div class="company-badges" style="margin-top: 24px;">
+    <span class="badge apple"><span class="badge-dot"></span>Apple</span>
+    <span class="badge meta"><span class="badge-dot"></span>Meta</span>
+    <span class="badge google"><span class="badge-dot"></span>Google</span>
+    <span class="badge appian"><span class="badge-dot"></span>Appian</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════════ -->
+<section>
+  <h2>Selected Projects</h2>
+  <div class="projects-grid">
+
+    <!-- Core AI -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Apple · Core AI/ML</div>
+        <div class="project-title">
+          <a href="https://developer.apple.com/core-ai/" target="_blank" rel="noopener">
+            Founded Core AI
+          </a>
+        </div>
+        <p class="project-desc">
+          Apple's purpose-built framework for running AI and ML models entirely on-device
+          across iOS, macOS, visionOS, and iPadOS. Powering on-device Apple Intelligence,
+          it gives developers a Swift-native pipeline to load, optimize, and deploy models
+          while keeping user data private — with zero server or token costs.
+          <br><br>
+          Core AI is a full-lifecycle toolset: from Python model creation and AI optimization
+          techniques, through compiler and runtime optimizations, all the way to on-device
+          execution with Xcode integration and a built-in debugger.
+        </p>
+        <div class="tags">
+          <span class="tag">On-device inference</span>
+          <span class="tag">Quantization</span>
+          <span class="tag">Apple Platforms</span>
+          <span class="tag">Apple Silicon</span>
+          <span class="tag">GPU</span>
+          <span class="tag">Neural Engine</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://developer.apple.com/core-ai/" target="_blank" rel="noopener">Core AI platform</a></li>
+          <li><a href="https://developer.apple.com/documentation/coreai/" target="_blank" rel="noopener">Core AI framework</a></li>
+          <li><a href="https://developer.apple.com/documentation/coreai/integrating-on-device-ai-models-in-your-app-with-core-ai" target="_blank" rel="noopener">Integrating on-device AI models in your app with Core AI</a></li>
+          <li><a href="https://github.com/apple/coreai-models" target="_blank" rel="noopener">Core AI Models</a></li>
+          <li><a href="https://github.com/apple/coreai-torch" target="_blank" rel="noopener">Core AI PyTorch extensions</a></li>
+          <li><a href="https://github.com/apple/coreai-optimization" target="_blank" rel="noopener">Core AI Optimization</a></li>
+          <li><a href="https://developer.apple.com/core-ai-debugger/" target="_blank" rel="noopener">Core AI Debugger</a></li>
+          <li><a href="https://developer.apple.com/documentation/coreai/inspecting-debugging-and-profiling-core-ai-models" target="_blank" rel="noopener">Inspecting, debugging, and profiling Core AI models</a></li>
+          <li><a href="https://developer.apple.com/documentation/coreai/analyzing-model-runtime-performance-with-instruments" target="_blank" rel="noopener">Analyzing model runtime performance with Instruments</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Apple Intelligence -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Apple · Apple Intelligence &amp; Siri AI</div>
+        <div class="project-title">Apple Intelligence &amp; Siri AI Infrastructure</div>
+        <p class="project-desc">
+          Lead the infrastructure to create and deploy Apple Intelligence and the revamped
+          Siri AI across supported Apple platforms, including state-of-the-art LLMs that
+          make efficient use of Apple's memory architecture.
+        </p>
+        <div class="tags">
+          <span class="tag">Apple Intelligence</span>
+          <span class="tag">Memory efficiency</span>
+          <span class="tag">Siri AI</span>
+          <span class="tag">Foundation Models</span>
+          <span class="tag">LLMs</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models" target="_blank" rel="noopener">Introducing the Third Generation of Apple's Foundation Models</a></li>
+          <li><a href="https://machinelearning.apple.com/research/apple-foundation-models-2025-updates" target="_blank" rel="noopener">Updates to Apple's On-Device and Server Foundation Language Models</a></li>
+          <li><a href="https://machinelearning.apple.com/research/introducing-apple-foundation-models" target="_blank" rel="noopener">Introducing Apple's On-Device and Server Foundation Models</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ExecuTorch -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Meta · PyTorch</div>
+        <div class="project-title">
+          <a href="https://docs.pytorch.org/executorch-overview" target="_blank" rel="noopener">
+            Founded ExecuTorch
+          </a>
+        </div>
+        <p class="project-desc">
+          An end-to-end solution for on-device inference across mobile, wearables,
+          embedded devices, and microcontrollers. Part of the PyTorch Edge ecosystem,
+          enabling efficient deployment of vision, speech, and Generative AI models.
+          Powers Meta's family of apps on Android and iOS, and AI on Meta's wearables.
+        </p>
+        <div class="tags">
+          <span class="tag">On-device inference</span>
+          <span class="tag">Mobile AI</span>
+          <span class="tag">PyTorch 2.0</span>
+          <span class="tag">Quantization</span>
+          <span class="tag">Edge devices</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://arxiv.org/abs/2605.08195" target="_blank" rel="noopener">Created the vision and strategy for ExecuTorch <strong style="color:var(--accent)">🏆 Best Paper, MLSys '26</strong></a></li>
+          <li><a href="https://pytorch.org/edge" target="_blank" rel="noopener">Redefined the strategy for PyTorch's on-device ML suite: "PyTorch Edge"</a></li>
+          <li><a href="https://pytorch.org/executorch/stable/getting-started-architecture.html" target="_blank" rel="noopener">Defined the ExecuTorch technical architecture</a></li>
+          <li><a href="https://pytorch.org/executorch/stable/concepts.html" target="_blank" rel="noopener">Defined the relationship and integration of PyTorch Core, IRs, and the new 2.0 APIs</a></li>
+          <li><a href="https://pytorch.org/executorch/stable/ir-exir.html" target="_blank" rel="noopener">Key contributor to define PyTorch's torch.export and Edge IRs</a></li>
+          <li><a href="https://pytorch.org/executorch/stable/quantization-overview.html" target="_blank" rel="noopener">Redefined the strategy and architecture for ML optimization around torch.export</a></li>
+          <li><a href="https://ai.meta.com/blog/executorch-reality-labs-on-device-ai/" target="_blank" rel="noopener">First embedded use of ExecuTorch within Meta's smart glasses</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TF Model Optimization -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Google · TensorFlow</div>
+        <div class="project-title">
+          <a href="https://www.tensorflow.org/model_optimization" target="_blank" rel="noopener">
+            Founded TensorFlow Model Optimization Toolkit
+          </a>
+        </div>
+        <p class="project-desc">
+          A suite of tools for optimizing ML models for deployment and execution,
+          via easy-to-use and consistent APIs implementing powerful optimization
+          techniques — including quantization, pruning, and weight clustering.
+        </p>
+        <div class="tags">
+          <span class="tag">Quantization</span>
+          <span class="tag">Pruning</span>
+          <span class="tag">Weight clustering</span>
+          <span class="tag">Edge TPU</span>
+          <span class="tag">Model optimization</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3" target="_blank" rel="noopener">Introducing the Model Optimization Toolkit for TensorFlow</a></li>
+          <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-pruning-api-42cac9157a6a" target="_blank" rel="noopener">TensorFlow Model Optimization Toolkit — Pruning API</a></li>
+          <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-post-training-integer-quantization-b4964a1ea9ba" target="_blank" rel="noopener">Post-Training Integer Quantization</a></li>
+          <li><a href="https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-float16-quantization-halves-model-size-cc113c75a2fa" target="_blank" rel="noopener">Post-training reduced-precision fp16 quantization</a></li>
+          <li><a href="https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html" target="_blank" rel="noopener">Quantization Aware Training API</a></li>
+          <li><a href="https://ai.googleblog.com/2019/08/efficientnet-edgetpu-creating.html" target="_blank" rel="noopener">EfficientNet-EdgeTPU: Accelerator-aware neural network design with AutoML</a></li>
+          <li><a href="https://blog.tensorflow.org/2020/08/tensorflow-model-optimization-toolkit-weight-clustering-api.html" target="_blank" rel="noopener">Weight Clustering API</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TF Lite -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Google · TensorFlow</div>
+        <div class="project-title">
+          <a href="https://www.tensorflow.org/lite" target="_blank" rel="noopener">
+            Co-Founded TensorFlow Lite
+          </a>
+        </div>
+        <p class="project-desc">
+          Google's open-source deep learning framework for on-device ML.
+          Billions of installs across mobile phones, smart displays, speakers, cars,
+          and wearables — powering Google's and other companies' products.
+          Now known as LiteRT.
+        </p>
+        <div class="tags">
+          <span class="tag">On-device ML</span>
+          <span class="tag">Mobile</span>
+          <span class="tag">Wearables</span>
+          <span class="tag">Billions of installs</span>
+          <span class="tag">LiteRT</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://developers.googleblog.com/2017/11/announcing-tensorflow-lite.html" target="_blank" rel="noopener">Announcing TensorFlow Lite</a></li>
+          <li><a href="https://blog.tensorflow.org/2020/07/tensorflow-operation-fusion-in-tensorflow-lite-converter.html" target="_blank" rel="noopener">TensorFlow operation fusion in the TensorFlow Lite converter</a></li>
+          <li><a href="https://firebase.googleblog.com/2019/04/ml-kit-expands-into-nlp.html" target="_blank" rel="noopener">ML Kit expands into NLP with Language Identification and Smart Reply</a></li>
+          <li><a href="https://blog.tensorflow.org/2020/03/higher-accuracy-on-vision-models-with-efficientnet-lite.html" target="_blank" rel="noopener">Higher accuracy on vision models with EfficientNet-Lite</a></li>
+          <li><a href="https://blog.tensorflow.org/2020/07/accelerating-tensorflow-lite-xnnpack-integration.html" target="_blank" rel="noopener">Accelerating TensorFlow Lite with XNNPACK Integration</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Speech Recognition -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-company">Google · Speech</div>
+        <div class="project-title">On-Device Speech Recognition</div>
+        <p class="project-desc">
+          Brought speech and related technologies to run entirely on-device.
+          Part of the team that developed the very-low-power "Hey Google" capabilities,
+          building the first end-to-end system and the latest iteration of the ML model.
+          Also built the pre-TensorFlow ML inference engine that powered a new generation
+          of on-device speech recognizers, text-to-speech generators, and keyboard technology.
+        </p>
+        <div class="tags">
+          <span class="tag">Speech recognition</span>
+          <span class="tag">Hey Google</span>
+          <span class="tag">On-device NLP</span>
+          <span class="tag">CIFG/LSTM</span>
+          <span class="tag">Sparsity</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <div class="project-links-label">Selected work</div>
+        <ul class="link-list">
+          <li><a href="https://arxiv.org/abs/1712.03603" target="_blank" rel="noopener">Very-low-power "Hey Google" capabilities across devices</a></li>
+          <li><a href="https://arxiv.org/abs/1812.02802" target="_blank" rel="noopener">End-to-End Streaming Keyword Spotting</a></li>
+          <li><a href="https://arxiv.org/abs/1811.06621" target="_blank" rel="noopener">First end-to-end on-device speech recognition system</a></li>
+          <li><a href="https://ai.googleblog.com/2019/03/an-all-neural-on-device-speech.html" target="_blank" rel="noopener">An all-neural on-device speech recognizer</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════ -->
+<section>
+  <h2>Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">2023 — Present</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">
+          <a href="https://www.apple.com" target="_blank" rel="noopener">Apple</a>
+        </div>
+        <div class="timeline-role">Engineering Lead & Architect, Core AI / Core ML</div>
+        <p class="timeline-desc">
+          Founded and architected Core AI. Lead the on-device infrastructure team,
+          developing state-of-the-art infrastructure to deploy machine learning across
+          Apple's products and devices — playing a key role in the rollout of Apple
+          Intelligence and Siri AI — as well as third-party applications.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">2020 — 2023</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">
+          <a href="https://www.meta.com" target="_blank" rel="noopener">Meta</a>
+        </div>
+        <div class="timeline-role">Tech Lead, PyTorch</div>
+        <p class="timeline-desc">
+          Championed PyTorch 2.0 technology. Founded and led the architecture of
+          ExecuTorch — PyTorch's end-to-end solution for enabling on-device inference
+          across mobile and edge devices — now the deployment backbone for Meta's app
+          family and AI on Meta's wearables.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">2012 — 2020</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">
+          <a href="https://www.google.com" target="_blank" rel="noopener">Google</a>
+        </div>
+        <div class="timeline-role">Tech Lead, TensorFlow & Speech</div>
+        <p class="timeline-desc">
+          Served as Tech Lead in TensorFlow, co-founded TensorFlow Lite (now LiteRT),
+          and founded the TensorFlow Model Optimization Toolkit. Earlier, worked in the
+          Speech team on on-device recognition, developing the technology behind
+          "Hey Google" and building the pre-TensorFlow ML inference engine that
+          powered Google Assistant's early on-device AI.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">2005 — 2012</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">
+          <a href="https://www.appian.com" target="_blank" rel="noopener">Appian</a>
+        </div>
+        <div class="timeline-role">Engineering Lead</div>
+        <p class="timeline-desc">
+          Led a number of engineering projects, most significantly co-authoring the
+          SAIL (Self-Assembling Interface Layer) technology — the foundational
+          technology underpinning Appian's low-code platform.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PATENTS & PUBLICATIONS
+══════════════════════════════════════════ -->
+<section>
+  <h2>Patents &amp; Publications</h2>
+  <p style="color: var(--muted); font-size: .95rem; margin-bottom: 24px;">
+    A selection of patents:
+  </p>
+  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+    <a class="patent-pill" href="https://patents.google.com/patent/US9767410B1/en" target="_blank" rel="noopener">US-9767410B1 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US9372675B1/en" target="_blank" rel="noopener">US-9372675B1 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US9542948B2/en" target="_blank" rel="noopener">US-9542948B2 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US9842608B2/en" target="_blank" rel="noopener">US-9842608B2 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US10460735B2/en" target="_blank" rel="noopener">US-10460735B2 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/EP3121809B1/en" target="_blank" rel="noopener">EP-3121809B1 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US20200126537A1/en" target="_blank" rel="noopener">US-20200126537A1 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/WO2020092532A1/en" target="_blank" rel="noopener">WO-2020092532A1 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US9953216B2/en" target="_blank" rel="noopener">US-9953216B2 ↗</a>
+    <a class="patent-pill" href="https://patents.google.com/patent/US20250355703A1" target="_blank" rel="noopener">US-20250355703A1 ↗</a>
+  </div>
+  <p style="color: var(--muted); font-size: .95rem; margin-top: 24px;">
+    For academic publications view the full list on <a href="https://scholar.google.com/citations?user=FszLUOUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+  </p>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EDUCATION
+══════════════════════════════════════════ -->
+<section>
+  <h2>Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">2003 – 2005</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">Instituto Tecnológico y de Estudios Superiores de Monterrey</div>
+        <div class="timeline-role">M.S. Computer Science — Artificial Intelligence, Image Processing &amp; Robotics · <em>Summa Cum Laude</em></div>
+        <p class="timeline-desc">
+          Research assistant. Competed in the ACM Collegiate Programming Contest 🎈 and represented the university at the RoboCup World Cup ⚽.
+        </p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-period">1998 – 2003</div>
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-company">Instituto Tecnológico y de Estudios Superiores de Monterrey</div>
+        <div class="timeline-role">B.S. Computer Science — Artificial Intelligence · <em>Summa Cum Laude</em></div>
+        <p class="timeline-desc">
+          ACM Collegiate Programming Contest 🎈 · RoboCup World Cup ⚽
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+</main>
+
+<footer>
+  <p>Raziel Alvarez &nbsp;·&nbsp;
+    <a href="https://twitter.com/razielag" target="_blank" rel="noopener">@razielag</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/razielalvar" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://github.com/raziel" target="_blank" rel="noopener">GitHub</a>
+  </p>
+</footer>
+
 </body>
 </html>
